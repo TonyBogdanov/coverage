@@ -1,0 +1,19 @@
+name: Coverage
+author: Tony Bogdanov
+description: GitHub action to generate GitHub Pages for PHPUnit coverage
+branding:
+    color: blue
+    icon: code
+inputs:
+    path:
+        required: true
+        description: The path to your coverage folder.
+    password:
+        default: ''
+        description: Optionally specify a password to be used for encrypting the HTML coverage files.
+runs:
+    using: docker
+    image: docker://tonybogdanov/coverage:latest
+    args:
+        - ${{ inputs.path }}
+        - ${{ inputs.password }}
