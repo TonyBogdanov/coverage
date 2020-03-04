@@ -3,7 +3,7 @@ author: Tony Bogdanov
 description: GitHub action to generate GitHub Pages for PHPUnit coverage
 branding:
     color: blue
-    icon: code
+    icon: check-square
 inputs:
     path:
         required: true
