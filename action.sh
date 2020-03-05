@@ -38,8 +38,10 @@ then
     exit 1
 fi
 
+cd "${1}"
+
 php /coverage/fix.php
-/coverage/vendor/bin/php-coverage-badger "${1}/coverage.xml" "${1}/coverage.svg"
+/coverage/vendor/bin/php-coverage-badger coverage.xml coverage.svg
 
 if [[ ! -z "${2}" ]]
 then
