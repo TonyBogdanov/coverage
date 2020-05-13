@@ -1,4 +1,4 @@
-name: Coverage
+name: tonybogdanov-coverage
 author: Tony Bogdanov
 description: GitHub action to generate GitHub Pages for PHPUnit coverage
 branding:

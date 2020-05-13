@@ -16,7 +16,7 @@ Add the following step to your jobs:
 
 ```yaml
 - name: Coverage
-  uses: tonybogdanov/coverage@master
+  uses: TonyBogdanov/coverage@1.0
   with:
       path: ./path/to/coverage
       password: <optional password>
@@ -39,12 +39,12 @@ coverage:
           uses: actions/checkout@v1
 
         - name: Download artifacts
-          uses: actions/download-artifact@v1
+          uses: actions/download-artifact@v2
           with:
               name: coverage
 
         - name: Coverage
-          uses: tonybogdanov/coverage@master
+          uses: TonyBogdanov/coverage@1.0
           with:
               path: coverage
               password: coverage
