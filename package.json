@@ -13,6 +13,7 @@
   },
   "homepage": "https://github.com/TonyBogdanov/coverage#readme",
   "dependencies": {
-    "better-staticrypt": "^1.3.3"
+    "better-staticrypt": "^1.3.3",
+    "glob": "^7.1.6"
   }
 }

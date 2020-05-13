@@ -2,6 +2,8 @@
 
 set -e
 
+td=`dirname \`realpath "${0}"\``
+
 if [[ -z "${1}" ]]
 then
     echo "Path to the coverage folder is required and must be specified."
@@ -38,17 +40,19 @@ then
     exit 1
 fi
 
+if [[ -z "${2}" ]]
+then
+    echo "Missing coverage password, specify it as argument 2."
+    exit 1
+fi
+
 cd "${1}"
 
-php /coverage/fix.php
-/coverage/vendor/bin/php-coverage-badger coverage.xml coverage.svg
+echo "Fixing coverage paths"
+php $td/fix.php
 
-if [[ ! -z "${2}" ]]
-then
-    shopt -s globstar
+echo "Generating coverage badge"
+$td/vendor/bin/php-coverage-badger coverage.xml coverage.svg
 
-    for i in **/*.html; do
-        echo "Encrypting ${i}..."
-        node /coverage/node_modules/better-staticrypt -e -o "$i" "$i" "${2}"
-    done
-fi
+echo "Encrypting coverage files"
+node $td/encrypt.js "${2}"

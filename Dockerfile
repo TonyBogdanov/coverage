@@ -5,13 +5,6 @@ ENV TZ=Europe/Sofia
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN mkdir /coverage
-
-COPY package.json /coverage/package.json
-COPY composer.json /coverage/composer.json
-COPY fix.php /coverage/fix.php
-COPY action.sh /coverage/action.sh
-
 RUN apt-get update
 RUN apt-get install -y gnupg
 
@@ -29,17 +22,26 @@ RUN apt-get autoremove -y
 
 RUN apt-get install -y php7.4-cli
 RUN apt-get install -y php7.4-xml
+RUN apt-get install -y php7.4-zip
 RUN apt-get install -y npm
-RUN apt-get install -y git
+RUN apt-get install -y zip
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --install-dir=/usr/bin --filename=composer
 RUN php -r "unlink('composer-setup.php');"
 
-RUN cd /coverage && composer validate
-RUN cd /coverage && composer install --prefer-dist --no-progress --no-suggest
+RUN mkdir /coverage
 
+COPY package.json /coverage/package.json
 RUN cd /coverage && npm install
+
+COPY composer.json /coverage/composer.json
+RUN cd /coverage && composer validate
+RUN cd /coverage && composer install --prefer-dist --no-progress --no-suggest --no-dev
+
+COPY fix.php /coverage/fix.php
+COPY action.sh /coverage/action.sh
+COPY encrypt.js /coverage/encrypt.js
 
 RUN chmod u+x /coverage/action.sh
 ENTRYPOINT ["/coverage/action.sh"]

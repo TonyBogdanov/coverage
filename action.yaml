@@ -9,6 +9,7 @@ inputs:
         required: true
         description: The path to your coverage folder.
     password:
+        required: false
         default: ''
         description: Optionally specify a password to be used for encrypting the HTML coverage files.
 runs:
