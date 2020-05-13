@@ -40,12 +40,6 @@ then
     exit 1
 fi
 
-if [[ -z "${2}" ]]
-then
-    echo "Missing coverage password, specify it as argument 2."
-    exit 1
-fi
-
 cd "${1}"
 
 echo "Fixing coverage paths"
@@ -54,5 +48,8 @@ php $td/fix.php
 echo "Generating coverage badge"
 $td/vendor/bin/php-coverage-badger coverage.xml coverage.svg
 
-echo "Encrypting coverage files"
-node $td/encrypt.js "${2}"
+if [[ ! -z "${2}" ]]
+then
+    echo "Encrypting coverage files"
+    node $td/encrypt.js "${2}"
+fi

@@ -39,9 +39,12 @@ COPY composer.json /coverage/composer.json
 RUN cd /coverage && composer validate
 RUN cd /coverage && composer install --prefer-dist --no-progress --no-suggest --no-dev
 
+COPY lib /coverage/lib
 COPY fix.php /coverage/fix.php
 COPY action.sh /coverage/action.sh
 COPY encrypt.js /coverage/encrypt.js
+COPY template.html /coverage/template.html
 
 RUN chmod u+x /coverage/action.sh
+
 ENTRYPOINT ["/coverage/action.sh"]
