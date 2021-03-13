@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19a12bc04ec32037332ec2545411bc9e",
+    "content-hash": "6c5024d5b1f60a82d24f1ebb9190ebc4",
     "packages": [
         {
             "name": "jaschilz/php-coverage-badger",
@@ -42,6 +42,9 @@
             ],
             "description": "Create a code coverage badge from a PHPUnit Clover XML file.",
             "homepage": "https://github.com/jaschilz/PhpCoverageBadge",
+            "support": {
+                "source": "https://github.com/JASchilz/PHPCoverageBadge/tree/master"
+            },
             "time": "2017-07-21T20:03:56+00:00"
         }
     ],
@@ -52,7 +55,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3"
+        "php": "^7.4"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
 }
